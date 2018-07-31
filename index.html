@@ -169,22 +169,24 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
   <script>
-    var offset = 45;
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-    // Init Scroll Spy
-    $('body').scrollspy({ target: "#main-nav", offset: offset });
-    // Smooth Scrolling
-    $("#main-nav a").on('click', function (event) {
-      if (this.hash !== "") {
-        event.preventDefault();
-        const hash = this.hash;
-        $('html,body').animate({
-          scrollTop: $(hash).offset().top - offset
-        }, 600, function () {
-          window.location.hash = hash - offset;
-        });
-      }
+    $(document).ready(() => {
+      var offset = 45;
+      // Get the current year for the copyright
+      $('#year').text(new Date().getFullYear());
+      // Init Scroll Spy
+      $('body').scrollspy({ target: "#main-nav", offset: offset });
+      // Smooth Scrolling
+      $("#main-nav a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          const hash = this.hash;
+          $('html,body').animate({
+            scrollTop: $(hash).offset().top - offset
+          }, 600, function () {
+            window.location.hash = hash - offset;
+          });
+        }
+      });
     });
   </script>
 </body>
