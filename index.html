@@ -1,0 +1,53 @@
+<html>
+
+<head>
+	<title>Animation</title>
+	<style>
+		body {
+			background-color: black;
+			font-family: monospace;
+			color: white;
+			font-size: 50px;
+			text-align: center;
+			margin-top: 20%;
+		}
+
+		#magic {
+			color: #777;
+			border-right: 1px solid #777;
+			padding-right: 7px;
+			display: inline;
+		}
+	</style>
+</head>
+
+<body>
+
+	杨志小朋友
+	<div id="magic"></div>
+
+</body>
+<script>
+	var words = ["是一个super可爱的boy", "不喜欢在吃饭时和人聊天","like牛肉干","喜欢去按摩房:(","总跑去图书馆看言情小说","有着性感的body"];
+	var letter = document.getElementById("magic");
+	var word_counter = 0;
+	var	character_counter = 0;
+	function updateText() {
+		if (character_counter == words[word_counter].length) {
+			word_counter++; 	//choose a different word
+			character_counter = 0;	//start over with the first character of the word
+			letter.innerHTML = '';  //set the html to be blank
+			//if we're displaying the last word, go back to the first word
+			if (word_counter == words.length)
+				word_counter = 0;
+		}
+		if (words[word_counter][character_counter] == " ") {
+			letter.innerHTML = letter.innerHTML + "&nbsp;";
+		} else {
+			letter.innerHTML = letter.innerHTML + words[word_counter][character_counter];
+		}
+		character_counter++;
+	}
+	setInterval(updateText, 300);
+</script>
+</html>
